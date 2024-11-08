@@ -24,8 +24,8 @@ Dự án này cung cấp trợ lý FAQ của trường đại học được h�
 2. Cài đặt các thư viện cần thiết từ file requirements.txt:
    ```bash
    pip instal -r requirements.txt
-3. Chạy file QA.py:
+3. Chạy file main.py:
    ```bash
-   python QA.py
+   python main.py
 4. Truy cập giao diện web và bắt đầu đặt câu hỏi về Thông tin về Trường Đại học Công Nghệ.
 
