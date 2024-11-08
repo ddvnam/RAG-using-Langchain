@@ -2,6 +2,9 @@
 
 # RAG for Q&A on University Information
 
+## Giao diện
+![Screenshot 2024-11-08 210130](https://github.com/user-attachments/assets/a69b3998-8f59-477c-8216-fbd6680b7371)
+
 ## Project Overview
 
 Dự án này cung cấp trợ lý FAQ của trường đại học được hỗ trợ bởi hệ thống Retrieval-Augmented Generation (RAG). Mục tiêu là cho phép người dùng, đặc biệt là sinh viên mới, nhanh chóng tìm thấy câu trả lời cho các câu hỏi về quy định và chính sách của trường đại học bằng cách nhập truy vấn bằng ngôn ngữ tự nhiên. Hệ thống RAG sẽ truy xuất thông tin có liên quan và tạo ra phản hồi mạch lạc, cải thiện khả năng truy cập và trải nghiệm của người dùng.
