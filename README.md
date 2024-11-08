@@ -1,15 +1,24 @@
 ![image_alt](https://github.com/user-attachments/assets/3fb48404-3472-4ee5-aff7-349f3d41f83f)
 
-# Retrieval-Augmented Generation (RAG) Project
-
-Dự án này được thiết kế để cung cấp cho sinh viên mới một cách thuận tiện để truy cập thông tin trường đại học thông qua lời nhắc bằng ngôn ngữ tự nhiên, tận dụng Công nghệ thế hệ tăng cường truy xuất (RAG) với LangChain.
+# RAG for Q&A on University Information
 
 ## Project Overview
 
-Hệ thống RAG cho phép người dùng đặt câu hỏi bằng ngôn ngữ tự nhiên và lấy câu trả lời có liên quan bằng cách kết hợp mô hình ngôn ngữ với kho lưu trữ vector để truy xuất. Trong trường hợp này, LangChain được sử dụng để quản lý các quy trình truy xuất và tạo, trong khi mô hình LLaMA được triển khai làm mô hình ngôn ngữ.
+Dự án này cung cấp trợ lý FAQ của trường đại học được hỗ trợ bởi hệ thống Retrieval-Augmented Generation (RAG). Mục tiêu là cho phép người dùng, đặc biệt là sinh viên mới, nhanh chóng tìm thấy câu trả lời cho các câu hỏi về quy định và chính sách của trường đại học bằng cách nhập truy vấn bằng ngôn ngữ tự nhiên. Hệ thống RAG sẽ truy xuất thông tin có liên quan và tạo ra phản hồi mạch lạc, cải thiện khả năng truy cập và trải nghiệm của người dùng.
 
-## Features
+## How to Run the Project
 
-- **Prompt-based Information Retrieval**: Người dùng có thể nhập câu hỏi, và hệ thống sẽ truy xuất và trình bày thông tin liên quan.
-- **Vector Store Integration**: Sử dụng FAISS để lưu trữ và truy vấn biểu diễn vectơ của nội dung.
-- **Web Interface**: Một giao diện web dựa trên Gradio cho phép người dùng tương tác với hệ thống một cách dễ dàng.
+### Requirements
+- Python 3.x
+- Gradio
+- FAISS
+- Underthesea (Xử lí text)
+- ChatGroq model API (Llama-3.1-70b-versatile hoặc model khác)
+- Langchain
+
+### Setup Steps
+1. Clone repository 
+2. Cài đặt các thử viện cần thiết đã được lưu trong file requiremment
+   pip install -r requirement.txt
+3. Chạy file QA.py
+4. Truy cập giao diện web và bắt đầu đặt câu hỏi về Thông tin về Trường Đại học Công Nghệ.
