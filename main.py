@@ -54,19 +54,40 @@ chain = create_chain(llm, prompt, db)
 def get_answer(question):
     return chain.invoke(question)["result"]
 
+import gradio as gr
+
+
+conversation_history = []
+
+def get_answer(question):
+    
+    conversation_history.append(("Sinh viên", question))
+    
+    answer = chain.invoke(question)["result"]
+    conversation_history.append(("Trợ lý", answer))
+    
+    chat_display = ""
+    for speaker, text in conversation_history:
+        chat_display += f"**{speaker}:** {text}\n\n"
+    return chat_display
+# Gradio interface
 with gr.Blocks() as rag_interface:
-
+    
     gr.Markdown("<h1>University FAQ Helper</h1><p>Ask a question, and I’ll retrieve relevant information to provide an answer!</p>")
-
+    
+    # Display chat history
+    chat_output = gr.Textbox(label="Chat History", value="", lines=10, interactive=False)
+    
     # Input for the user's question
     question_input = gr.Textbox(label="Nhập câu hỏi của bạn", placeholder="Type your question here...", lines=2)
-
-    # Output for the assistant's response
-    answer_output = gr.Textbox(label="Câu trả lời", placeholder="Answer will appear here...", lines=6, interactive=False)
-
-    # Define the submit button and link it to `answer_question`
+    
+    # Submit button to update the conversation
     submit_button = gr.Button("Submit")
-    submit_button.click(fn=get_answer, inputs=question_input, outputs=answer_output)
-
+    submit_button.click(fn=get_answer, inputs=question_input, outputs=chat_output)
+    
+    # Clear button to reset the conversation
+    clear_button = gr.Button("Clear Chat")
+    clear_button.click(fn=lambda: "", outputs=chat_output)
+    
 # Launch the interface
 rag_interface.launch(inbrowser=True, share=False)
