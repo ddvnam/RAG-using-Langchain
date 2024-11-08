@@ -1,4 +1,4 @@
-![image_alt](https://github.com/user-attachments/assets/3fb48404-3472-4ee5-aff7-349f3d41f83f)
+![University FAQ Assistant](https://github.com/user-attachments/assets/3fb48404-3472-4ee5-aff7-349f3d41f83f)
 
 # RAG for Q&A on University Information
 
@@ -12,13 +12,20 @@ Dự án này cung cấp trợ lý FAQ của trường đại học được h�
 - Python 3.x
 - Gradio
 - FAISS
-- Underthesea (Xử lí text)
+- Underthesea (Xử lý văn bản)
 - ChatGroq model API (Llama-3.1-70b-versatile hoặc model khác)
-- Langchain
+- LangChain
 
 ### Setup Steps
-1. Clone repository 
-2. Cài đặt các thử viện cần thiết đã được lưu trong file requiremment
-   pip install -r requirement.txt
-3. Chạy file QA.py
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd <project_directory>
+2. Cài đặt các thư viện cần thiết từ file requirements.txt:
+   ```bash
+   pip instal -r requirements.txt
+3. Chạy file QA.py:
+   ```bash
+   python QA.py
 4. Truy cập giao diện web và bắt đầu đặt câu hỏi về Thông tin về Trường Đại học Công Nghệ.
+
