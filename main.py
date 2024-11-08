@@ -1,13 +1,17 @@
 from langchain_community.llms import CTransformers
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from retriever import create_retriever
-from load_llm import load_llm
-from prepare_vector_db import load_db
+import gradio as gr
+
+from src.retriever import create_retriever
+from src.load_llm import load_llm
+from src.prepare_vector_db import load_db
+
 
 def create_prompt(template):
     prompt = PromptTemplate(template=template, input_variables=["context","question"])
     return prompt
+
 
 def create_chain(llm, prompt, db):
     retriever = create_retriever(db)
@@ -19,10 +23,6 @@ def create_chain(llm, prompt, db):
         chain_type_kwargs={'prompt': prompt}
     )
     return chain
-
-def get_answer(chain, question):
-    res = chain.invoke({'query': question})
-    return res['result']
 
 db = load_db('vector_db/')
 llm = load_llm()
@@ -51,4 +51,22 @@ Câu trả lời (liên quan đến Đại học Công nghệ):
 prompt = create_prompt(template)
 chain = create_chain(llm, prompt, db)
 
-print(get_answer(chain, "lịch sử hình thành trường Đại học Công nghệ"))
+def get_answer(question):
+    return chain.invoke(question)["result"]
+
+with gr.Blocks() as rag_interface:
+
+    gr.Markdown("<h1>University FAQ Helper</h1><p>Ask a question, and I’ll retrieve relevant information to provide an answer!</p>")
+
+    # Input for the user's question
+    question_input = gr.Textbox(label="Nhập câu hỏi của bạn", placeholder="Type your question here...", lines=2)
+
+    # Output for the assistant's response
+    answer_output = gr.Textbox(label="Câu trả lời", placeholder="Answer will appear here...", lines=6, interactive=False)
+
+    # Define the submit button and link it to `answer_question`
+    submit_button = gr.Button("Submit")
+    submit_button.click(fn=get_answer, inputs=question_input, outputs=answer_output)
+
+# Launch the interface
+rag_interface.launch(inbrowser=True, share=False)
